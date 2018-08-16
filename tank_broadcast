@@ -1,0 +1,19 @@
+local tankside = "right"
+local modemside = "left"
+local port = 949
+
+local tank = peripheral.wrap(tankside)
+local modem = peripheral.wrap(modemside)
+
+modem.open(port)
+print("port oepn!")
+
+while true do
+  modem.transmit(
+    port,
+    port,
+    tank.getTankInfo("unknown")[1]
+      .contents.amount
+    )
+  sleep(1)
+end
